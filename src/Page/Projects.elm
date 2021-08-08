@@ -100,6 +100,10 @@ displayRepo repo =
         ]
 
 
+
+-- we will sort repos using GithubRepo.compare
+
+
 displayRepos : List GithubRepo -> Html Msg
 displayRepos repos =
     Html.div
@@ -115,7 +119,10 @@ displayRepos repos =
     <|
         List.map
             displayRepo
-            repos
+        <|
+            List.sortWith
+                GithubRepo.compare
+                repos
 
 
 type alias Model =

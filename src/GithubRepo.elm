@@ -139,9 +139,13 @@ compareDates d1 d2 =
         GT
 
 
+
+-- We want repos sorted in reverse chronological order
+
+
 compare : Repo -> Repo -> Order
 compare r1 r2 =
-    compareDates r1.updatedAt r2.updatedAt
+    compareDates r2.updatedAt r1.updatedAt
 
 
 testDecoder =
@@ -155,50 +159,3 @@ testCompare =
         && (compareDates (UpdatedDate 2009 6 1) (UpdatedDate 2010 5 30) == LT)
         && (compareDates (UpdatedDate 2010 6 1) (UpdatedDate 2010 6 30) == LT)
         && (compareDates (UpdatedDate 2010 6 10) (UpdatedDate 2010 6 9) == GT)
-
-
-
--- displayRepo : Repo -> Element msg
--- displayRepo repo =
---     let
---         description =
---             case repo.description of
---                 Just desc ->
---                     "Description: " ++ desc
---                 Nothing ->
---                     "No Description"
---     in
---     let
---         repoTitle =
---             case repo.language of
---                 Just lang ->
---                     lang ++ ": " ++ repo.name
---                 Nothing ->
---                     repo.name
---     in
---     Element.link
---         [ Background.color colorPrimary
---         , Element.mouseOver [ Background.color colorPrimaryHighlight ]
---         , Border.rounded 5
---         , Element.padding 10
---         ]
---         { url = repo.htmlUrl
---         , label =
---             Element.column [ Element.spacing 10 ]
---                 [ Element.el [ Font.color colorSecondaryText, Font.size 30 ] (Element.text repoTitle)
---                 , Element.el [ Font.color colorDisabledText ]
---                     (Element.text description)
---                 , Element.text repo.htmlUrl
---                 ]
---         }
--- displayRepos : List Repo -> Element msg
--- displayRepos repos =
---     Element.column
---         [ Element.width Element.fill
---         , Element.spacing 20
---         , Element.padding 10
---         ]
---         (List.map
---             displayRepo
---             repos
---         )
