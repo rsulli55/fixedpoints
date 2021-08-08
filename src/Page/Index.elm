@@ -13,6 +13,7 @@ import MdRendering
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
+import Path
 import Shared
 import View exposing (View)
 
@@ -38,13 +39,6 @@ page =
         |> Page.buildNoState { view = view }
 
 
-
--- logoFileName : DataSource String
--- logoFileName =
---     DataSource.succeed "/content/images/fixed_point_def.png"
---         |> DataSource.map (Debug.log "image path")
-
-
 markdown : DataSource String
 markdown =
     DataSource.File.bodyWithoutFrontmatter "content/index.md"
@@ -60,17 +54,17 @@ head :
     -> List Head.Tag
 head static =
     Seo.summary
-        { canonicalUrlOverride = Nothing
+        { canonicalUrlOverride = Just "https://fixedpoints.xyz"
         , siteName = "fixedpoints"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Pages.Url.fromPath (Path.fromString "public/images/logo.svg")
+            , alt = "fixedpoints logo"
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "Fixed Points - Index"
+        , description = "Home - Fixed Points"
         , locale = Nothing
-        , title = "Fixed Points - Index" -- metadata.title -- TODO
+        , title = "Home - Fixed Points" -- metadata.title -- TODO
         }
         |> Seo.website
 
