@@ -8,13 +8,13 @@ import Head.Seo as Seo
 import Html.Styled as Html
 import Html.Styled.Attributes as Attr exposing (css)
 import MdRendering
-import Page exposing (Page, PageWithState, StaticPayload)
+import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
+import Path
 import ProjectNames exposing (projectNames)
 import Shared
 import Tailwind.Utilities as Tw
-import TailwindMarkdownRenderer
 import View exposing (View)
 
 
@@ -28,14 +28,6 @@ type alias Msg =
 
 type alias RouteParams =
     { name : String }
-
-
-
--- projectMarkdowns : DataSource (List String)
--- projectMarkdowns =
---     DataSource.map (List.map getProjectMd) projectNames
---         |> DataSource.resolve
---         |> DataSource.map (Debug.log "projectMarkdowns")
 
 
 page : Page RouteParams Data
@@ -70,17 +62,17 @@ head :
     -> List Head.Tag
 head static =
     Seo.summary
-        { canonicalUrlOverride = Nothing
-        , siteName = "Fixed Points"
+        { canonicalUrlOverride = Just "https://fixedpoints.xyz"
+        , siteName = "fixedpoints"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Pages.Url.fromPath (Path.fromString "public/images/logo.svg")
+            , alt = "fixedpoints logo"
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "Fixed Points - " ++ static.data.route
+        , description = static.data.route ++ " - Fixed Points"
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.data.route ++ " - Fixed Points"
         }
         |> Seo.website
 
@@ -95,19 +87,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Fixed Points - " ++ static.data.route
+    { title = static.data.route ++ " - Fixed Points"
     , body =
-        [ Html.div
-            [ css
-                [ Tw.flex
-                , Tw.flex_grow
-                , Tw.bg_gray_900
-                , Tw.py_2
-                , Tw.m_4
-                , Tw.px_4
-                , Tw.rounded
-                ]
-            ]
-            [ MdRendering.renderMd static.data.markdown ]
-        ]
+        [ MdRendering.renderMd static.data.markdown ]
     }
