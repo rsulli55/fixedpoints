@@ -1,4 +1,4 @@
-module Page.Posts exposing (Model, Msg, Data, page)
+module Page.Posts exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import Head
@@ -6,6 +6,7 @@ import Head.Seo as Seo
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
+import Path
 import Shared
 import View exposing (View)
 
@@ -17,8 +18,10 @@ type alias Model =
 type alias Msg =
     Never
 
+
 type alias RouteParams =
     {}
+
 
 page : Page RouteParams Data
 page =
@@ -43,17 +46,17 @@ head :
     -> List Head.Tag
 head static =
     Seo.summary
-        { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        { canonicalUrlOverride = Just "https://fixedpoints.xyz"
+        , siteName = "fixedpoints"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Pages.Url.fromPath (Path.fromString "images/logo_white_with_text.svg")
+            , alt = "fixedpoints logo"
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = "Posts - Fixed Points"
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = "Posts - Fixed Points"
         }
         |> Seo.website
 

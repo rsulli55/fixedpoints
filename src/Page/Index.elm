@@ -57,7 +57,7 @@ head static =
         { canonicalUrlOverride = Just "https://fixedpoints.xyz"
         , siteName = "fixedpoints"
         , image =
-            { url = Pages.Url.fromPath (Path.fromString "public/images/logo.svg")
+            { url = Pages.Url.fromPath (Path.fromString "images/logo_white_with_text.svg")
             , alt = "fixedpoints logo"
             , dimensions = Nothing
             , mimeType = Nothing
@@ -79,7 +79,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Fixed Points"
+    { title = "Home - Fixed Points"
     , body =
         [ Html.div []
             [ MdRendering.renderMd static.data ]
