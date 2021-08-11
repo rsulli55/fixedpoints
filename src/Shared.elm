@@ -175,7 +175,7 @@ siteHeader =
         ]
         [ Html.a [ Attr.href "/", css [] ]
             [ Html.img
-                [ Attr.src "images/logo_white_with_text.svg"
+                [ Attr.src "/images/logo_white_with_text.svg"
                 , Attr.alt "Fixed Points logo"
                 ]
                 []
