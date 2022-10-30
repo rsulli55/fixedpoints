@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  {% block title %}
+  <title>{{ config.title }}</title>
+  {% endblock %}
+
+  <link rel="shortcut icon" type="image/png" href="{{ config.extra.emily_favicon }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link id="stylesheet" rel="stylesheet" type="text/css" href="/dark.css">
+
+  <script type="text/javascript" src="/js/theme.js"></script>
+
+</head>
+
+<div class="header">
+  <div class="site_title">
+      <a href="/"><img src="{{ config.base_url }}{{ config.extra.emily_icon }}" alt="{{ config.title }}"
+                                                                                   width="{{ config.extra.emily_iconsize }}" height=auto></a>
+  </div>
+  <div class="menu">
+    <a href="/post">Posts</a>
+    &nbsp;<a href="/about">About</a>
+  </div>
+</div>
+
+<body onload="getTheme()">
+  <section class="section">
+    <div class="container">
+      {% block content %} {% endblock %}
+    </div>
+  </section>
+</body>
+
+<div class="footer">
+  Copyright {{ config.extra.emily_author }}
+</div>
+
+</html>

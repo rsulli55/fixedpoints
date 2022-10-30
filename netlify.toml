@@ -1,10 +1,16 @@
 [build]
-  functions = "functions/"
-  publish = "dist/"
-  command = "export ELM_HOME=\"$NETLIFY_BUILD_BASE/cache/elm\" && npm install -g elm@latest-0.19.1 && npm install --no-optional && npm run build"
+base    = "zola"
+publish = "zola/public"
+command = "zola build"
 
-[dev]
-  command = "npm start"
-  targetPort = 1234
-  autoLaunch = true
-  framework = "#custom"
+[build.environment]
+# version for Netlify to use
+ZOLA_VERSION = "0.13.0"
+
+# The magic for deploying previews of branches.
+# We need to override the base url with whatever url Netlify assigns to our
+# preview site.  We do this using the Netlify environment variable
+# `$DEPLOY_PRIME_URL`.
+
+[context.deploy-preview]
+command = "zola build --base-url $DEPLOY_PRIME_URL"
