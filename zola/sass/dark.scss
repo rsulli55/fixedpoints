@@ -1,0 +1,234 @@
+$tender-blue:#b3deef;
+$slate-green:#84a59d;
+$tender-yellow:#ffc24b;
+$tender-red:#f43753;
+$tender-magenta:#d3b987;
+
+$backgroundcolor: #282828;
+$textcolor: #feffff;
+$lighttextcolor: #cad2c5;
+
+body {
+    line-height: 1.5;
+    color: $textcolor;
+    background-color: $backgroundcolor;
+    font-family: sans-serif;
+    width: 80%;
+    min-width: 200px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+    img, video {
+        display: block;
+        margin: 0 auto;
+        max-width: 90%;
+    }
+    
+    ul {
+        margin-left: 1rem;
+        padding-left: 1rem;
+    }
+
+    a {
+        color: $textcolor;
+        text-decoration: underline;
+    }
+
+    @media screen and(max-width: 480px) {
+        width: 90%;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    color: $lighttextcolor;
+    background-color: $backgroundcolor;
+    top: 0;
+    padding-bottom : 5px;
+    border-bottom: solid 1px $slate-green;
+    overflow: hidden;
+    a {
+        color: $lighttextcolor;
+    }
+}
+
+.button_no_decoration {
+    color: $slate-green;
+    border: none;
+    outline: none;
+    background: transparent;
+    vertical-align: middle;
+    font-family: sans-serif;
+}
+
+.site_title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    a {
+        color: $textcolor;
+        text-decoration: none;
+    }
+}
+
+.menu {
+    text-align: right;
+    align-self: flex-end;
+    a {
+        text-decoration: none;
+    }
+}
+
+.date {
+    color: $slate-green;
+}
+
+.date_postpage {
+    color: $slate-green;
+    text-align: right;
+}
+
+.title {
+    color: $slate-green;
+    font-size: 1.3rem;
+    a {
+        text-decoration: none;
+    }
+}
+
+.archive_title {
+    font-size: 1.3rem;
+    a {
+        text-decoration: none;
+    }
+}
+
+.title_postpage {
+    font-size: 1.6em;
+    line-height: 1.4em;
+    justify-content: space-between;
+    font-weight: bold;
+    color: $textcolor;
+}
+
+.taxonomies a {
+    font-size: 0.9rem;
+    color: $lighttextcolor;
+    text-decoration: none;
+}
+
+.taxonomies_postpage {
+    text-align: right;
+    a {
+        font-size: 0.9rem;
+        color: $lighttextcolor;
+        text-decoration: none;
+    }
+}
+
+.taxonomies_index a {
+    font-size: 0.9rem;
+    color: $lighttextcolor;
+    text-decoration: none;
+
+    @media screen and(max-width: 480px) {
+        display: none;
+    }
+}
+
+.taxonomies_list {
+    a {
+        text-decoration: none;
+    }
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 0px;
+    // border-top: solid 1px $tender-blue;
+    a {
+        color: $lighttextcolor;
+        text-decoration: none;
+    }
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: $slate-green;
+}
+
+h2 {
+    font-size: 2.0rem;
+    color: $slate-green;
+}
+
+h3 {
+    font-size: 1.5rem;    
+    color: $slate-green;
+}
+
+h4 {
+    font-size: 1.3rem;    
+    color: $slate-green;
+
+}
+
+h5 {
+    font-size: 1.2rem;    
+    color: $slate-green;
+}
+
+h6 {
+    font-size: 1.1rem;    
+    color: $slate-green;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+pre {
+    border: 1px solid #AAA;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px;
+}
+
+:not(pre) > code {
+    color: $slate-green;
+}
+
+blockquote {
+    border-left: 5px solid $slate-green;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+table {
+    max-width: 90%;
+}
+
+table th {
+    padding: 10px;
+}
+
+table th, td {
+    border: solid 1px $tender-magenta;
+}
+
+table td {
+    padding: 10px;
+}
+
+button {
+    color: $backgroundcolor;
+    background-color: $slate-green;
+    border: solid;
+    border-radius: 3px;
+    border-color: $slate-green;
+}
